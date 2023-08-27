@@ -20,9 +20,15 @@ sleep 5
 
 rm -rf temp
 
+echo "NPM INSTALL"
 docker-compose exec grading npm install
 docker-compose exec grading php artisan key:generate
 docker-compose exec grading php artisan migrate
-docker-compose exec grading npm run dev
+echo "Changing permissions"
+sleep 1
+sudo chown $USER:$USER -R project
+
+cd project
+npm run dev
 
 echo "For more info visit: https://hub.docker.com/r/bitnami/laravel/"

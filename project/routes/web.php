@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::prefix('user')->group(function() {
     Route::controller(UserController::class)->group(function() {
+        Route::get('createTestAccount', 'createTest');
         Route::post('login', 'login');
         Route::get('logout', function(Request $request) {
             Auth::logout();
@@ -45,6 +46,7 @@ Route::controller(AdminController::class)->group(function() {
         Route::get('config', 'users')->middleware('auth');
     });
     
+    /** TODO: Use Route::resource instead */
     Route::prefix('admin/instructor')->group(function() {
         Route::get('list', 'instructorList')->middleware('auth');
         Route::get('add', 'instructorAdd')->middleware('auth');

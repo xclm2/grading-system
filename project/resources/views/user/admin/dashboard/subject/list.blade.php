@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/js/subjects.js"></script>
+@vite(['resources/js/subjects.js'])
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery('.subject-page').subjects({

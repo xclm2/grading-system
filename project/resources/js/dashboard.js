@@ -1,7 +1,3 @@
-require('bootstrap/dist/js/bootstrap')
-require('bootstrap/js/src/toast')
-require('bootstrap/js/src/popover')
-
 var createToast = function (msg = null, type = null)
 {
     var bg;

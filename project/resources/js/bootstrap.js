@@ -8,6 +8,12 @@ import axios from 'axios';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+import * as swal from 'sweetalert2';
+window.Swal = swal
+
+import '../../node_modules/bootstrap/dist/js/bootstrap'
+import '../../node_modules/bootstrap/js/src/toast'
+import '../../node_modules/bootstrap/js/src/popover'
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
