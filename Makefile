@@ -8,3 +8,6 @@ run-migrate:
 clear-route-cache:
 	docker-compose exec grading php artisan cache:clear
 	docker-compose exec grading php artisan route:cache
+
+route-list:
+	docker-compose exec grading php artisan route:list

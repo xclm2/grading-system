@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\SubjectContrller;
+use App\Http\Controllers\Admin\SubjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
@@ -46,12 +49,6 @@ Route::controller(AdminController::class)->group(function() {
         Route::get('config', 'users')->middleware('auth');
     });
     
-    /** TODO: Use Route::resource instead */
-    Route::prefix('admin/instructor')->group(function() {
-        Route::get('list', 'instructorList')->middleware('auth');
-        Route::get('add', 'instructorAdd')->middleware('auth');
-        Route::post('save', 'instructorSave')->middleware('auth');
-    });
 
     Route::prefix('admin/subject')->group(function() {
         Route::get('list/{query?}', 'subjectList')->middleware('auth');
@@ -60,6 +57,11 @@ Route::controller(AdminController::class)->group(function() {
         Route::delete('delete', 'subjectDelete')->middleware('auth');
         Route::delete('massDelete/{ids?}', 'massDeleteSubject')->middleware('auth');
     });
+});
+
+Route::prefix('admin')->group(function() {
+    Route::resource('subject', SubjectController::class)->only(['show']);
+    Route::resource('instructor', InstructorController::class)->only(['show','create','update','delete']);
 });
 
 Route::get('/admin/config', function() {
